@@ -1,0 +1,77 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:weightSum="1"
+    android:id="@+id/addGoalAlert">
+    <ImageView
+
+        android:layout_width="match_parent"
+        android:layout_height="23dp"
+        android:scaleType="center"
+        android:background="#ff0400"
+        android:contentDescription="@string/app_name"
+        android:layout_weight="0.38" />
+
+    <TextView
+
+        android:id="@+id/titleFour"
+        android:text="Add Goal"
+        android:textColor="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="23dp"
+        android:scaleType="center"
+        android:background="#ff0400"
+        android:contentDescription="@string/app_name"
+        android:layout_weight="0.5"
+        android:textAppearance="?android:textAppearanceLarge"
+        />
+    <EditText
+        android:id="@+id/goalName1"
+        android:inputType="text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="4dp"
+        android:hint="Goal Name" />
+
+    <EditText
+        android:id="@+id/goalSteps1"
+        android:inputType="number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="sans-serif"
+        android:hint="Target Number of Steps"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="Units:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:textAppearanceLarge"
+
+
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="31dp"
+            android:id="@+id/textView8" />
+
+        <Spinner
+            android:id="@+id/spinner3"
+            android:layout_width="140dp"
+            android:layout_height="35dp"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/textView8"
+            android:layout_marginStart="24dp" />
+    </RelativeLayout>
+
+
+</LinearLayout>

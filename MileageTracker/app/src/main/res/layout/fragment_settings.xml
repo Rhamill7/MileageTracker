@@ -1,0 +1,95 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.robbie.mileagetracker.fragments.SettingsFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Switch
+                android:id="@+id/switch1"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+            android:text="Turn Test Mode OFF/ON"
+                android:textAppearance="?android:textAppearanceLarge"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="12dp" />
+
+
+        <Switch
+            android:id="@+id/switch2"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:text="Goals Editable N/Y"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:layout_marginTop="80dp"
+            android:layout_below="@+id/textView8"
+            android:layout_alignStart="@+id/textView8" />
+
+        <Spinner
+            android:id="@+id/spinner4"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:layout_below="@+id/textView3"
+            android:layout_alignEnd="@+id/switch1">
+
+        </Spinner>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Test Date Selected:"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:layout_below="@+id/switch1"
+            android:layout_alignStart="@+id/switch1" />
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:layout_alignBaseline="@+id/textView2"
+            android:layout_alignBottom="@+id/textView2"
+            android:layout_alignEnd="@+id/spinner4" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Units:"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:layout_alignTop="@+id/spinner4"
+            android:layout_alignStart="@+id/textView2" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/textView8"
+            android:layout_below="@+id/textView8"
+            android:layout_marginTop="27dp"
+            android:text="Stride Length (m)"
+            android:textAppearance="?android:textAppearanceLarge"
+            />
+
+        <EditText
+            android:id="@+id/editText4"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/switch2"
+            android:layout_alignTop="@+id/textView6"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:hint="0.5"/>
+
+
+    </RelativeLayout>
+
+
+</FrameLayout>
