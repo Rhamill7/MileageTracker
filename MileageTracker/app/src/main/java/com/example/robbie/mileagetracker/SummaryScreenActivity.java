@@ -16,7 +16,7 @@ import com.example.robbie.mileagetracker.fragments.TripsFragment;
 import com.example.robbie.mileagetracker.fragments.HistoryFragment;
 import com.example.robbie.mileagetracker.fragments.SettingsFragment;
 import com.example.robbie.mileagetracker.fragments.StatisticsFragment;
-import com.example.robbie.mileagetracker.fragments.PedometerFragment;
+import com.example.robbie.mileagetracker.fragments.TrackerFragment;
 
 public class SummaryScreenActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
@@ -84,9 +84,9 @@ public class SummaryScreenActivity extends AppCompatActivity
            FragmentManager manager = getFragmentManager();
            manager.beginTransaction().replace(R.id.content_summary_screen, settingsFragment, settingsFragment.getTag()).commit();
         } else if (id == R.id.nav_test) {
-            PedometerFragment pedometerFragment = new PedometerFragment();
+            TrackerFragment trackerFragment = new TrackerFragment();
             FragmentManager manager = getFragmentManager();
-            manager.beginTransaction().replace(R.id.content_summary_screen, pedometerFragment, pedometerFragment.getTag()).commit();
+            manager.beginTransaction().replace(R.id.content_summary_screen, trackerFragment, trackerFragment.getTag()).commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -6,10 +6,13 @@ import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.location.Location;
+import android.util.Log;
 
 import com.example.robbie.mileagetracker.Goal;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by Robbie on 09/02/2017.
@@ -40,21 +43,35 @@ public class FeedReaderDbHelper extends SQLiteOpenHelper {
     public static final String TEST_COLUMN_UNITS = "units";
     public static final String TEST_COLUMN_EDIT = "editable";
     public static final String TEST_COLUMN_STRIDE = "stride";
-    public static final String TEST_COLUMN_INIT = "init";        ;
+    public static final String TEST_COLUMN_INIT = "init";
+
+    public static final String LOCATION_TABLE_NAME = "location";
+    public static final String LOCATION_COLUMN_ID = "_id";
+    public static final String LOCATION_COLUMN_LONG = "longitude";
+    public static final String LOCATION_COLUMN_LAT = "latitude";
+    public static final String LOCATION_COLUMN_DATE = "date";
+
 
 
     public FeedReaderDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE " + GOAL_TABLE_NAME +
-                "(" + GOAL_COLUMN_ID + " INTEGER PRIMARY KEY, " +
-                GOAL_COLUMN_NAME + " TEXT, " +
-                GOAL_COLUMN_STEPS + " INTEGER, " +
-                GOAL_COLUMN_TARGET + " INTEGER, " +
-                GOAL_COLUMN_DATE + " TEXT, " +
-                GOAL_COLUMN_ACTIVE + " INTEGER, " +
-                GOAL_COLUMN_UNITS + " TEXT)");
+        db.execSQL("CREATE TABLE " + LOCATION_TABLE_NAME +
+                "(" + LOCATION_COLUMN_ID + " INTEGER PRIMARY KEY, " +
+                LOCATION_COLUMN_LONG + " DOUBLE, " +
+                LOCATION_COLUMN_LAT + " DOUBLE, " +
+                LOCATION_COLUMN_DATE + " TEXT)");
+
+        db.execSQL("CREATE TABLE " + TEST_TABLE_NAME +
+                "(" + TEST_COLUMN_ID + " INTEGER PRIMARY KEY, " +
+                TEST_COLUMN_NAME + " TEXT, " +
+                TEST_COLUMN_DATE + " TEXT, " +
+                TEST_COLUMN_ACTIVE + " INTEGER, " +
+                TEST_COLUMN_UNITS + " TEXT, " +
+                TEST_COLUMN_EDIT + " INTEGER, " +
+                TEST_COLUMN_STRIDE+ " REAL, " +
+                TEST_COLUMN_INIT + " INTEGER)");
 
         db.execSQL("CREATE TABLE " + TEST_TABLE_NAME +
                 "(" + TEST_COLUMN_ID + " INTEGER PRIMARY KEY, " +
@@ -72,10 +89,54 @@ public class FeedReaderDbHelper extends SQLiteOpenHelper {
         // to simply to discard the data and start over
         db.execSQL("DROP TABLE IF EXISTS " + GOAL_TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + TEST_TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + LOCATION_TABLE_NAME);
         onCreate(db);
     }
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         onUpgrade(db, oldVersion, newVersion);
+    }
+
+    ////////////////////LOCATION///////////////////////////////////////
+    public Location getCurrentLocation() {
+
+        Location location = new Location("Google");
+        double latitude = 0.0;
+        double longitude = 0.0;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor =  db.rawQuery( "SELECT * FROM " + GOAL_TABLE_NAME, null );
+        cursor.moveToFirst();
+        try {
+            latitude = cursor.getDouble(1);
+            longitude = cursor.getDouble(2);
+        } catch (Exception e){
+        }
+            // Do something with Date
+            //location = new Location("Google");
+            location.setLatitude(latitude);
+            location.setLongitude(longitude);
+
+
+        if(location==null){
+            //location = new Location("Google");
+            location.setLatitude(55.863447);
+            location.setLongitude(-4.241082);
+            Log.e("Location database","Couldn't get location");
+        }
+
+        cursor.close();
+        db.close();
+        return location;
+    }
+
+    public void storeLocation(Location location, Context context){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues args = new ContentValues();
+        args.put(LOCATION_COLUMN_LAT,location.getLatitude());
+        args.put(LOCATION_COLUMN_LONG, location.getLongitude());
+        args.put(LOCATION_COLUMN_DATE, new Date().getTime());
+        db.insert(LOCATION_TABLE_NAME, null, args);
     }
 
     ////////////////////////////Test Mode//////////////////////////////

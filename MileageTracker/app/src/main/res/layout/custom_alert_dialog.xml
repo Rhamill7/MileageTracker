@@ -16,14 +16,15 @@
     <TextView
 
         android:id="@+id/titleFour"
-        android:text="Add Goal"
+        android:text="Add a New Trip"
         android:textColor="#ffffff"
         android:layout_width="match_parent"
-        android:layout_height="23dp"
+        android:layout_height="match_parent"
         android:scaleType="center"
         android:background="#ff0400"
         android:contentDescription="@string/app_name"
         android:layout_weight="0.5"
+        android:paddingBottom="2dp"
         android:textAppearance="?android:textAppearanceLarge"
         />
     <EditText
@@ -35,7 +36,7 @@
         android:layout_marginLeft="4dp"
         android:layout_marginRight="4dp"
         android:layout_marginBottom="4dp"
-        android:hint="Goal Name" />
+        android:hint="Trip Name" />
 
     <EditText
         android:id="@+id/goalSteps1"
@@ -47,7 +48,7 @@
         android:layout_marginRight="4dp"
         android:layout_marginBottom="16dp"
         android:fontFamily="sans-serif"
-        android:hint="Target Number of Steps"/>
+        android:hint="Place Holder"/>
 
     <RelativeLayout
         android:layout_width="match_parent"

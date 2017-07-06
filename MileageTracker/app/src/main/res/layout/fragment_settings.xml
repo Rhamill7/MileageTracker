@@ -9,34 +9,43 @@
         android:layout_height="match_parent">
 
         <Switch
-                android:id="@+id/switch1"
-                android:layout_width="350dp"
-                android:layout_height="wrap_content"
-            android:text="Turn Test Mode OFF/ON"
-                android:textAppearance="?android:textAppearanceLarge"
+            android:id="@+id/switch3"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:text="Enable Tracking N/Y"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:layout_centerVertical="true"
+            android:layout_alignEnd="@+id/textView3" />
+
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="12dp" />
+            android:layout_marginTop="12dp"
+            android:text="Turn Test Mode OFF/ON"
+            android:textAppearance="?android:textAppearanceLarge" />
 
 
         <Switch
             android:id="@+id/switch2"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="29dp"
             android:text="Goals Editable N/Y"
             android:textAppearance="?android:textAppearanceLarge"
-            android:layout_marginTop="80dp"
-            android:layout_below="@+id/textView8"
-            android:layout_alignStart="@+id/textView8" />
+            android:layout_below="@+id/switch3"
+            android:layout_alignStart="@+id/switch3" />
 
         <Spinner
             android:id="@+id/spinner4"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:textAppearance="?android:textAppearanceLarge"
+            android:layout_alignEnd="@+id/switch1"
             android:layout_below="@+id/textView3"
-            android:layout_alignEnd="@+id/switch1">
+            android:layout_marginTop="24dp"
+            android:textAppearance="?android:textAppearanceLarge">
 
         </Spinner>
 
@@ -44,28 +53,29 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/switch1"
+            android:layout_below="@+id/switch1"
             android:layout_marginTop="32dp"
             android:text="Test Date Selected:"
-            android:textAppearance="?android:textAppearanceLarge"
-            android:layout_below="@+id/switch1"
-            android:layout_alignStart="@+id/switch1" />
+            android:textAppearance="?android:textAppearanceLarge" />
+
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:textAppearanceLarge"
             android:layout_alignBaseline="@+id/textView2"
             android:layout_alignBottom="@+id/textView2"
-            android:layout_alignEnd="@+id/spinner4" />
+            android:layout_alignEnd="@+id/spinner4"
+            android:textAppearance="?android:textAppearanceLarge" />
 
         <TextView
             android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Units:"
-            android:textAppearance="?android:textAppearanceLarge"
+            android:layout_alignStart="@+id/textView2"
             android:layout_alignTop="@+id/spinner4"
-            android:layout_alignStart="@+id/textView2" />
+            android:text="Units:"
+            android:textAppearance="?android:textAppearanceLarge" />
 
         <TextView
             android:id="@+id/textView6"
@@ -75,8 +85,7 @@
             android:layout_below="@+id/textView8"
             android:layout_marginTop="27dp"
             android:text="Stride Length (m)"
-            android:textAppearance="?android:textAppearanceLarge"
-            />
+            android:textAppearance="?android:textAppearanceLarge" />
 
         <EditText
             android:id="@+id/editText4"
@@ -85,8 +94,8 @@
             android:layout_alignEnd="@+id/switch2"
             android:layout_alignTop="@+id/textView6"
             android:ems="10"
-            android:inputType="numberDecimal"
-            android:hint="0.5"/>
+            android:hint="0.5"
+            android:inputType="numberDecimal" />
 
 
     </RelativeLayout>

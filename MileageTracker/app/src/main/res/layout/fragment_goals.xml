@@ -58,7 +58,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="No Goal Set"
+                    android:text="Latest Trip"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentStart="true" />
 
@@ -180,7 +180,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             fab:fab_size="mini"
-            fab:fab_label="Add Goal"
+            fab:fab_label="Add Trip"
             android:src="@drawable/ic_grade_white_18dp"/>
 
     </com.github.clans.fab.FloatingActionMenu>
