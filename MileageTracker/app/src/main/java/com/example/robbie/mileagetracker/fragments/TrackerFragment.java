@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.robbie.mileagetracker.R;
+import com.example.robbie.mileagetracker.location.LocationApiWrapper;
 
 import java.io.IOException;
 import java.util.List;
@@ -60,8 +61,17 @@ public class TrackerFragment extends Fragment {
         myButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Location location =
-                //loc.onLocationChanged();
+               try{
+                LocationApiWrapper loc = new LocationApiWrapper(getContext());
+                Location location = loc.getCurrentLocation();
+//                Toast.makeText(getContext(),
+//                        "olc: lat: " + String.valueOf(location.getLatitude()) +
+//                        "long: " + String.valueOf(location.getLongitude()),
+//                        Toast.LENGTH_SHORT).show();
+               }catch (Exception exception){
+                   Toast.makeText(getContext(), "NAWWWW", Toast.LENGTH_LONG).show();
+               }
+
             }
         });
         mySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -77,56 +87,5 @@ public class TrackerFragment extends Fragment {
 
     }
 
-    /*----------Listener class to get coordinates ------------- */
-    private class MyLocationListener implements LocationListener {
-        @Override
-        public void onLocationChanged(Location loc) {
-
-           // editLocation.setText("");
-           // pb.setVisibility(View.INVISIBLE);
-            Toast.makeText(getContext(),"Location changed : Lat: " +
-                            loc.getLatitude()+ " Lng: " + loc.getLongitude(),
-                    Toast.LENGTH_SHORT).show();
-            String longitude = "Longitude: " +loc.getLongitude();
-           // Log.v(TAG, longitude);
-            String latitude = "Latitude: " +loc.getLatitude();
-           // Log.v(TAG, latitude);
-
-    /*----------to get City-Name from coordinates ------------- */
-            String cityName=null;
-            Geocoder gcd = new Geocoder(getContext(),
-                    Locale.getDefault());
-            List<Address> addresses;
-            try {
-                addresses = gcd.getFromLocation(loc.getLatitude(), loc
-                        .getLongitude(), 1);
-                if (addresses.size() > 0)
-                    System.out.println(addresses.get(0).getLocality());
-                cityName=addresses.get(0).getLocality();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            String s = longitude+"\n"+latitude +
-                    "\n\nMy Currrent City is: "+cityName;
-           // editLocation.setText(s);
-        }
-
-        @Override
-        public void onProviderDisabled(String provider) {
-            // TODO Auto-generated method stub
-        }
-
-        @Override
-        public void onProviderEnabled(String provider) {
-            // TODO Auto-generated method stub
-        }
-
-        @Override
-        public void onStatusChanged(String provider,
-                                    int status, Bundle extras) {
-            // TODO Auto-generated method stub
-        }
-    }
 }
 
